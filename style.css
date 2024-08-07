@@ -2,5 +2,41 @@ html {
     box-sizing: border-box;
     background: url(./images/tictactoebg.jpg);
     background-size: cover;
-  }
-  
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.boardSpace {
+    width: 40vh;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    background-color: rgba(255, 0, 0, 0.4);
+    
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+}
+
+.boardposition{
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+}
+
+.boardposition.circle{
+    background-image: url(./images/o.png);
+    background-size: contain;
+}
+.boardposition.cross{
+    background-image: url(./images/x.png);
+    background-size: contain;
+}
