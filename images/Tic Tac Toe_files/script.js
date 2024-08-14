@@ -21,37 +21,18 @@ function createPlayer (userNameInput){
     return { getPlayerName, increaseScore, getScore }
 };
 
-let players = [
-    createPlayer("Player 1"),
-    createPlayer("Player 2"),
-];
-
 // default game is created with default players
 let defaultgame=boardControlInit();
-defaultgame.startGame();
 //buttons event listener activate
 buttonControl ();
 
-
+let players = [];
    
 function boardControlInit (){
     const gameBoardCreate = ()=> (Array(3).fill().map(()=>Array(3).fill(null)));
     gameBoard = gameBoardCreate();
-    const cross="cross"; 
-    const circle="circle";
 
-    
-    let playerX = {
-        playerInfo : players[0],
-        playerIcon : cross,
-    };
-    let playerO = {
-        playerInfo : players[1],
-        playerIcon : circle,
-    };
-
-    const startGame = () =>{
-        defaultgame.resetGame();
+    const startGame = ()=>{
         //if players were not created and is undefined then use default players
         if (players[0]===undefined){  
             players[0]=createPlayer("Player 1");
@@ -59,18 +40,21 @@ function boardControlInit (){
         if (players[1]===undefined){  
             players[1]=createPlayer("Player 2");
         }
-        playerX.playerInfo=players[0];
-        playerO.playerInfo=players[1];
     };
 
-
-
-
     //const cross and circle made this way so it can be changed in the future, with alternative options or user desired element 
+    const cross="cross"; 
+    const circle="circle";
 
-
-
-    console.log("players:",playerX.playerInfo.getPlayerName(), " vs ", playerO.playerInfo.getPlayerName());
+    const playerX = {
+        playerInfo: players[0],
+        playerIcon: cross,
+    };
+    const playerO = {
+        playerInfo: players[1],
+        playerIcon: circle,
+    };
+    console.log("players:",playerX.playerInfo.getPlayerName(), " vs ", playerName2.getPlayerName());
     
     let turn=0;
     const turnPlayed = (x,y) => {
@@ -101,9 +85,6 @@ function boardControlInit (){
             if (gameWinner!=null) {
                 gameWinner.playerInfo.increaseScore();
                 let gameWinnerPlayerName = gameWinner.playerInfo.getPlayerName();
-                console.log(gameWinner.playerInfo.getPlayerName());
-                console.log(playerX.playerInfo.getPlayerName());
-                console.log(players[0].getPlayerName());
                 let gameWinnerPlayerIcon = gameWinner.playerIcon;
                 let gameWinnerScore=gameWinner.playerInfo.getScore();
                 //console log is showing properly but alert is not showing variables (alert must use "+" not ",")
@@ -199,5 +180,6 @@ function boardControlInit (){
 
 function buttonControl () {
     domElements.gameStartBtn.addEventListener("click", ()=>{defaultgame.startGame()});
-    domElements.gameAddPlayerAll.forEach((gameAddPlayer,index)=> {gameAddPlayer.addEventListener("click", ()=>{console.log("holis"), players[index]=createPlayer(domElements.gameAddPlayerNameAll[index].value)})});
+    domElements.gameAddPlayerAll.forEach((gameAddPlayer,index)=> {gameAddPlayer.addEventListener("click", ()=>{players[index]=createPlayer(domElements.gameAddPlayerNameAll[index].value)})});
+    domElements
 };      
