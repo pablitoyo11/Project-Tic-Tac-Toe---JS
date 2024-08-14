@@ -1,3 +1,5 @@
+let game = {}
+
 
 function createPlayer (userNameInput){
     const playerName = userNameInput;
@@ -55,9 +57,9 @@ console.log("player",playerName2.getPlayerName());
                 let gameWinnerPlayerName = gameWinner.playerInfo.getPlayerName();
                 let gameWinnerPlayerIcon = gameWinner.playerIcon;
                 let gameWinnerScore=gameWinner.playerInfo.getScore();
-                //console log is showing properly but alert is not showing variables
-                console.log("The winner is ",gameWinner.playerInfo.getPlayerName()," using ",gameWinner.playerIcon," their new score is ",gameWinnerScore);
-                alert("The winner is ",gameWinnerPlayerName," using ",gameWinnerPlayerIcon," their new score is ",gameWinnerScore);
+                //console log is showing properly but alert is not showing variables (alert must use "+" not ",")
+               // console.log("The winner is ",gameWinnerPlayerName," using ",gameWinnerPlayerIcon," their new score is ",gameWinnerScore);
+                alert("The winner is "+gameWinnerPlayerName+" using "+gameWinnerPlayerIcon+" their new score is "+gameWinnerScore);
                 turn=9; //block all positions and emulate a full board
             }
         }
@@ -143,5 +145,5 @@ console.log("player",playerName2.getPlayerName());
         }
     }
 
-    return {turnPlayed, getBoardStatus, resetGame, renderBoard }
+    return {turnPlayed, resetGame, renderBoard}
 };

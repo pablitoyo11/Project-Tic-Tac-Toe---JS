@@ -8,19 +8,38 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Tic Tac Toe! </h1>
    
-    <div class="boardSpace">
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
-       <div class="boardposition"></div>
+    <div class="gameContainer" id="tictactoe">
+        <div class="gameTitle">
+            <h1>Tic Tac Toe! </h1>
+        </div>
+        <div class="boardSpace">
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        <div class="boardposition"></div>
+        </div>
+        <div class="gameButtons">
+            <button class="gameStart">Start</button>
+            <button class="gameAddPlayer"><span class="gameAddPlayerText">Add Player 1</span>
+                <span class="gameAddPlayerIcon">+</span>
+            </button>
+            <input type="text" placeholder="Player1...">
+
+            <button class="gameAddPlayer"><span class="gameAddPlayerText">Add Player 2</span>
+                <span class="gameAddPlayerIcon">+</span>
+            </button>
+            <input type="text" placeholder="Player2...">
+
+            
+        </div>
     </div>
+
     <div class="scoreboard">
     </div>
     
