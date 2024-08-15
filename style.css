@@ -13,6 +13,22 @@ h1{
     text-shadow: 0 0 5px #ff0000;
 }
 
+.boardAndScore {
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.player1Score{
+    color: red;
+}
+
+.player2Score{
+    color: blue;
+}
+
+
 .boardSpace {
     width: 40vh;
     height: 40vh;

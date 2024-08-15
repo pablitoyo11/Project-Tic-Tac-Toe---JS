@@ -6,6 +6,9 @@ let domElements = {
     gameAddPlayerAll : document.querySelectorAll(".gameAddPlayer"),
     gameAddPlayerNameAll : document.querySelectorAll(".gameAddPlayerName"),
     
+    player1Score : document.querySelector(".player1Score"),
+    player2Score : document.querySelector(".player2Score"),
+
     player1Name: document.querySelectorAll(".gameAddPlayerName")[0].value,
     player2Name: document.querySelectorAll(".gameAddPlayerName")[1].value,
 };
@@ -100,10 +103,11 @@ function boardControlInit (){
             let  gameWinner =checkWinner(x,y);
             if (gameWinner!=null) {
                 gameWinner.playerInfo.increaseScore();
+                
                 let gameWinnerPlayerName = gameWinner.playerInfo.getPlayerName();
-                console.log(gameWinner.playerInfo.getPlayerName());
-                console.log(playerX.playerInfo.getPlayerName());
-                console.log(players[0].getPlayerName());
+               //console.log(gameWinner.playerInfo.getPlayerName());
+               //console.log(playerX.playerInfo.getPlayerName());
+               //console.log(players[0].getPlayerName());
                 let gameWinnerPlayerIcon = gameWinner.playerIcon;
                 let gameWinnerScore=gameWinner.playerInfo.getScore();
                 //console log is showing properly but alert is not showing variables (alert must use "+" not ",")
@@ -178,6 +182,7 @@ function boardControlInit (){
     //falta agregar player si es X o O
     boardPositions.forEach((boardPositions,index)=> {boardPositions.addEventListener("click", ()=>{turnPlayed(Math.floor(index/3),index%3)})});
     const renderBoard = ()=> {
+        renderScore();
         let boardStatus=getBoardStatus();
         for (let indexRow = 0; indexRow <= 2; indexRow++) {
             for (let indexColumn = 0; indexColumn <= 2; indexColumn++) {
@@ -194,10 +199,15 @@ function boardControlInit (){
         }
     }
 
+    const renderScore = () => {
+        domElements.player1Score.innerText=(" X, "+players[0].getPlayerName()+" : "+players[0].getScore());
+        domElements.player2Score.innerText=(" O, "+players[1].getPlayerName()+ " : "+players[1].getScore());
+    }
+    
     return {turnPlayed, resetGame, renderBoard, startGame}
 };
 
 function buttonControl () {
     domElements.gameStartBtn.addEventListener("click", ()=>{defaultgame.startGame()});
-    domElements.gameAddPlayerAll.forEach((gameAddPlayer,index)=> {gameAddPlayer.addEventListener("click", ()=>{console.log("holis"), players[index]=createPlayer(domElements.gameAddPlayerNameAll[index].value)})});
+    domElements.gameAddPlayerAll.forEach((gameAddPlayer,index)=> {gameAddPlayer.addEventListener("click", ()=>{players[index]=createPlayer(domElements.gameAddPlayerNameAll[index].value)})});
 };      
